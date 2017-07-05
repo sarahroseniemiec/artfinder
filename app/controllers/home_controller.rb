@@ -23,11 +23,14 @@ require 'hyperclient'
       end
     end
 
-    andy_warhol = api.artist(id: 'andy-warhol')
-    puts "#{andy_warhol.name} was born in #{andy_warhol.birthday} in #{andy_warhol.hometown} #{andy_warhol.artworks}"
-
-    puts "yoooo"
-
+    artist = api.artist(id: 'gustav-klimt')
+    puts "#{artist.name} was born in #{artist.birthday} in #{artist.hometown} #{artist.artworks}"
+    art = api.artworks(artist_id: artist.id)
+    # @art = artist.artworks
+    size = art._embedded.artworks[0].image_versions[0]
+    puts size
+    link = art._embedded.artworks[0]._links.image
+    puts link.class
 
   end
 end
