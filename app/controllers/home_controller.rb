@@ -2,8 +2,7 @@ class HomeController < ApplicationController
 require 'net/http'
 require 'json'
 require 'hyperclient'
-
-
+require "google/cloud/vision"
 
   def index
     client_id = ENV['ARTSY_CLIENT_ID']
@@ -32,5 +31,36 @@ require 'hyperclient'
     link = art._embedded.artworks[0]._links.image
     puts link.class
 
+
+    # Your Google Cloud Platform project ID
+    project_id = ENV['VISION_PROJECT']
+
+    # Instantiates a client
+    vision = Google::Cloud::Vision.new project: project_id
+
+    # The name of the image file to annotate
+    image = vision.image "https://d32dm0rphc51dk.cloudfront.net/NOpIAwQa-3r51Cg9qXKbfA/medium.jpg"
+
+
+    # Performs label detection on the image file
+    # labels = image.labels
+
+    image.properties.colors.each do |color|
+      puts "Color #{color.red}, #{color.green}, #{color.blue}"
+    end
+
+    # puts "Labels:"
+    # labels.each do |label|
+    #   puts label.description
+    # end
+    # vision = Google::Cloud::Vision.new
+    #
+    # image = vision.image "https://d32dm0rphc51dk.cloudfront.net/NOpIAwQa-3r51Cg9qXKbfA/medium.jpg"
   end
+
+
+
+
+
+
 end
