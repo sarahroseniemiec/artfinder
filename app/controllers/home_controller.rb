@@ -39,23 +39,21 @@ require "google/cloud/vision"
     vision = Google::Cloud::Vision.new project: project_id
 
     # The name of the image file to annotate
-    image = vision.image "https://d32dm0rphc51dk.cloudfront.net/NOpIAwQa-3r51Cg9qXKbfA/medium.jpg"
+    @image = vision.image "http://www.xavierpastor.com/wp-content/uploads/2015/05/hotel-budapest.jpg"
 
 
     # Performs label detection on the image file
-    # labels = image.labels
+    @labels = @image.labels
 
-    image.properties.colors.each do |color|
-      puts "Color #{color.red}, #{color.green}, #{color.blue}"
-    end
+    # image.properties.colors.each do |color|
+    #   puts "Color #{color.red}, #{color.green}, #{color.blue}"
+    # end
 
     # puts "Labels:"
     # labels.each do |label|
     #   puts label.description
     # end
-    # vision = Google::Cloud::Vision.new
-    #
-    # image = vision.image "https://d32dm0rphc51dk.cloudfront.net/NOpIAwQa-3r51Cg9qXKbfA/medium.jpg"
+
   end
 
 
