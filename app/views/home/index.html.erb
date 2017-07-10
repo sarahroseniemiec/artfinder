@@ -1,14 +1,21 @@
-<h1>Hello</h1>
+<h1>Color Finder</h1>
 <h2>Main Colors:</h2>
+
+
+<div class="image">
+  <%= image_tag "#{@thumbnail}" %>
+</div>
 <div class="colorholder">
 <% @image.properties.colors.each do |color| %>
-  <div class="color" style="background-color: rgb(<%=color.red.to_i%> , <%=color.green.to_i%>, <%=color.blue.to_i%>); height:<%= color.score.to_f * 100 %>%" >
+  <div class="color" style="background-color: rgb(<%=color.red.to_i%> , <%=color.green.to_i%>, <%=color.blue.to_i%>); width:<%= color.score.to_f * 100 %>%" >
   </div>
 <% end %>
-
-<h3>Labels:</h3>
-<% @labels.each do |label| %>
+</div>
+<div class="labels">
+  <h3>Labels:</h3>
+  <% @labels.each do |label| %>
   <%= label.description %>
-<% end %>
+  <br>
+  <% end %>
 
 </div>

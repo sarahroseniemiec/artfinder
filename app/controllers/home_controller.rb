@@ -22,15 +22,17 @@ require "google/cloud/vision"
       end
     end
 
-    artist = api.artist(id: 'gustav-klimt')
+    artist = api.artist(id: 'paul-gauguin')
     puts "#{artist.name} was born in #{artist.birthday} in #{artist.hometown} #{artist.artworks}"
     art = api.artworks(artist_id: artist.id)
     # @art = artist.artworks
     size = art._embedded.artworks[0].image_versions[0]
-    puts size
+    @title = art._embedded.artworks[0].title
+    @medium = art._embedded.artworks[0].medium
+    @date = art._embedded.artworks[0].date
     link = art._embedded.artworks[0]._links.image
-    puts link.class
-
+    # @thumbnail = art._embedded.artworks[0]._links.thumbnail
+    @thumbnail = "https://s-media-cache-ak0.pinimg.com/736x/4c/92/54/4c925427971720f0f8247b52c9571af7.jpg"
 
     # Your Google Cloud Platform project ID
     project_id = ENV['VISION_PROJECT']
@@ -39,21 +41,12 @@ require "google/cloud/vision"
     vision = Google::Cloud::Vision.new project: project_id
 
     # The name of the image file to annotate
-    @image = vision.image "http://www.xavierpastor.com/wp-content/uploads/2015/05/hotel-budapest.jpg"
 
+    # @image = vision.image "http://www.xavierpastor.com/wp-content/uploads/2015/05/hotel-budapest.jpg"
 
+    @image = vision.image "https://s-media-cache-ak0.pinimg.com/736x/4c/92/54/4c925427971720f0f8247b52c9571af7.jpg"
     # Performs label detection on the image file
     @labels = @image.labels
-
-    # image.properties.colors.each do |color|
-    #   puts "Color #{color.red}, #{color.green}, #{color.blue}"
-    # end
-
-    # puts "Labels:"
-    # labels.each do |label|
-    #   puts label.description
-    # end
-
   end
 
 

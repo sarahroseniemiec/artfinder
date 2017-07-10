@@ -1,16 +1,105 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// global styles
+
+$mainfont: 'Quicksand', sans-serif;
+
+html, body {
+  margin: 0px;
+  height: 100%;
+
+}
+
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: $mainfont;
+}
+
+button:focus, textarea:focus, select:focus {
+   outline: none;
+}
+
+input:-webkit-autofill {
+   -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
+
+input:focus, textarea:focus {
+ outline: none;
+ border-bottom: 1px solid black;
+}
+
+input {
+  font-family: $mainfont;
+  font-size: 20px;
+  margin: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 370px;
+}
+
+textarea {
+  font-family: $mainfont;
+  font-size: 18px;
+  margin: 10px;
+  resize: none;
+}
+
+input[type="submit"] {
+  text-transform: uppercase;
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 20px;
+  margin: 20px;
+  padding: 10px;
+  background-color: transparent;
+
+}
+
+input[type="submit"]:hover {
+  // border-color: $linkcolor;
+  // background-color: $linkcolor;
+}
+
+
+input[type="checkbox"] {
+  width: 20px;
+
+}
+
+select {
+  font-family: $mainfont;
+  font-size: 20px;
+  margin: 20px 10px 20px 10px;
+}
+
+a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.center {
+  text-align: center;
+}
+
+
+
+.image {
+  text-align: center;
+}
+
+.labels {
+  text-align: center;
 }
 
 .color {
-  width: 100px;
-  // height: 100px;
+  // width: 100px;
+  height: 200px;
+  display: inline-block;
 }
 
 .colorholder {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 200px;
+  text-align: center;
 }
